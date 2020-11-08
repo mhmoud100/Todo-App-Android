@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activites.EditProfileActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update your Profile Image :"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/white"/>
+    <LinearLayout
+        android:id="@+id/layout_button"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+        <Button
+            android:id="@+id/btnChoose"
+            android:text="Choose"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_bg"
+            android:layout_width="match_parent"
+            android:layout_marginRight="8dp"
+            android:textColor="@color/login_form_details_medium"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Name :"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/white" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/login_form_details"/>
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/login_form_details_medium"/>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>

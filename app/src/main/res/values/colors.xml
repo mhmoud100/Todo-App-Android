@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="offWhite">#E8E7E7</color>
+    <color name="lightBlue">#5C51C8</color>
+    <color name="black">#000000</color>
+    <color name="red">#F44336</color>
+    <color name="dark_blue">#3023AE</color>
+    <color name="darker_blue">#170F6A</color>
+    <color name="purple">#c86dd7</color>
+    <color name="login_form_details">#ccffffff</color>
+    <color name="login_form_details_light">#1affffff</color>
+    <color name="login_form_details_medium">#66ffffff</color>
+</resources>
