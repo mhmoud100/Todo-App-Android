@@ -90,7 +90,7 @@ private DrawerLayout drawer;
                         textView.setText("Hello "+ document.get("User Name"));
                         if ((document.get("Image Profile")).equals("")){
 
-                            imageView.setImageDrawable(getDrawable(R.drawable.ic_avatar_icon));
+                            imageView.setImageResource(R.drawable.ic_avatar_icon);
                         }else Picasso.with(MainActivity.this).load((String) document.get("Image Profile")).fit().centerInside().into(imageView);
                     }
                 }

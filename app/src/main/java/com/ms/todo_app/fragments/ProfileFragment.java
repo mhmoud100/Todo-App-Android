@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,11 +72,12 @@ public class ProfileFragment extends Fragment {
                                 birth.setText((String) document.get("Date of Birth"));
                                 gender.setText((String) document.get("Gender"));
                                 String image = (String) document.get("Image Profile");
-                                if (image.equals("")){
+                                if (image.equals("")) {
                                     //If there is no Image Put the Default Image
-                                    Picasso.with(getContext()).load(R.drawable.ic_avatar_icon).fit().into(photo);
-                                }else{
-                                    //If there is Image Load it
+                                    photo.setImageResource(R.drawable.ic_avatar_icon);
+//
+
+                                }else {
                                     Picasso.with(getContext()).load((String) document.get("Image Profile")).fit().centerInside().into(photo);
                                 }
 

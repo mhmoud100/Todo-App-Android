@@ -35,7 +35,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.ms.todo_app.R;
 import com.ms.todo_app.adapters.RecyclerViewAdapter;
-import com.ms.todo_app.classes.TodoItems;
+import com.ms.todo_app.model.TodoItems;
 
 import java.util.ArrayList;
 import java.util.HashMap;

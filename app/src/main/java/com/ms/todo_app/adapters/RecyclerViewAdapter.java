@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ms.todo_app.R;
-import com.ms.todo_app.classes.TodoItems;
+import com.ms.todo_app.model.TodoItems;
 import com.ms.todo_app.fragments.TodoFragment;
 
 import java.util.ArrayList;

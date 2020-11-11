@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     tools:context=".fragments.ProfileFragment">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -127,6 +128,7 @@
         android:text="@string/update_profile"
         android:textAllCaps="false"
         android:textColor="@color/login_form_details_medium"
+
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_left"
         app:layout_constraintTop_toBottomOf="@id/gender" />
@@ -138,6 +140,7 @@
         android:layout_marginBottom="16dp"
         app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"

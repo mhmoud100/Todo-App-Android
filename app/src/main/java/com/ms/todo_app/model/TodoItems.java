@@ -1,4 +1,4 @@
-package com.ms.todo_app.classes;
+package com.ms.todo_app.model;
 
 public class TodoItems {
     public String todo;
