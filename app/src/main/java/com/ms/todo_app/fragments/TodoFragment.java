@@ -272,7 +272,7 @@ public class TodoFragment extends Fragment {
                     //Make ProgressBar Disappear
                     progressBar.setVisibility(View.GONE);
                     for(QueryDocumentSnapshot document : task.getResult()) {
-                        if (((String) document.get("uid")).equals(user.getUid())) {
+                        if ((document.get("uid")).equals(user.getUid())) {
                             //Add the Todo id in id ArrayList
                             id.add(0, document.getId());
                             //Add The Data to todoItems(ArrayList)
