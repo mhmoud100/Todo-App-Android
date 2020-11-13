@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
     String myFormat;
     SimpleDateFormat sdf;
     Boolean isC;
+    ProgressBar progressBar;
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
@@ -50,6 +52,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        progressBar = findViewById(R.id.progress);
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         pass = findViewById(R.id.password);
@@ -98,30 +101,48 @@ public class SignUpActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
+                register.setEnabled(false);
                 final String Email = email.getText().toString().trim();
                 String password = pass.getText().toString();
                 String passwordConfirm = passconfirm.getText().toString();
                 final String userName = username.getText().toString().trim();
                 if (Email.isEmpty()) {
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Please Put Your Email", Toast.LENGTH_LONG).show();
                     email.requestFocus();
                 } else if (password.isEmpty()) {
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Please Put Your Password", Toast.LENGTH_LONG).show();
                     pass.requestFocus();
                 } else if (Email.isEmpty() && password.isEmpty()) {
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Fill The Form Please", Toast.LENGTH_LONG).show();
                 } else if (!password.equals(passwordConfirm)){
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "The Passwords Doesn't Match", Toast.LENGTH_LONG).show();
                     passconfirm.requestFocus();
                 } else if (username.getText().toString().equals("")){
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Please put Username", Toast.LENGTH_LONG).show();
                     username.requestFocus();
                 } else if (password.length() < 6){
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Password must be at least 6 Charachters", Toast.LENGTH_LONG).show();
                 } else if (!isC){
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Please Choose your Gender", Toast.LENGTH_LONG).show();
 
                 } else if (birthday.getText().toString().equals("Date of Birth")){
+                    progressBar.setVisibility(View.GONE);
+                    register.setEnabled(true);
                     Toast.makeText(SignUpActivity.this, "Please put Your Birthday", Toast.LENGTH_LONG).show();
 
                 } else if (!Email.isEmpty() && !password.isEmpty()) {
@@ -143,18 +164,22 @@ public class SignUpActivity extends AppCompatActivity {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(SignUpActivity.this, "done", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(SignUpActivity.this, "done", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(SignUpActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(SignUpActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                                             }
                                         });
 
                                         startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                                        progressBar.setVisibility(View.GONE);
+                                        register.setEnabled(true);
                                         Toast.makeText(SignUpActivity.this, "SignedUp Successfully", Toast.LENGTH_SHORT).show();
                                     } else {
+                                        progressBar.setVisibility(View.GONE);
+                                        register.setEnabled(true);
                                         // If sign in fails, display a message to the user.
                                         Toast.makeText(SignUpActivity.this, task.getException().toString(), Toast.LENGTH_LONG).show();
 

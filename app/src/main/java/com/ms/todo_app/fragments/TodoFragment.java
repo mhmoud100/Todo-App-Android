@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,8 +102,9 @@ public class TodoFragment extends Fragment {
                     Map<String, Object> todo = new HashMap<>();
                     todo.put("todo", addText.getText().toString().trim());
                     todo.put("isCompleted", false);
+                    todo.put("uid", user.getUid());
                     //Add the Data to fireStore
-                    db.collection(col)
+                    db.collection("Todos")
                             .add(todo)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
@@ -148,7 +150,7 @@ public class TodoFragment extends Fragment {
                 //The Todo Swiped left Lisetener (Delete)
                 case ItemTouchHelper.LEFT:
                     //Deleting The Todo From FireStore
-                    db.collection(col).document(TodoFragment.id.get(position))
+                    db.collection("Todos").document(TodoFragment.id.get(position))
                             .delete()
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -194,7 +196,7 @@ public class TodoFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //Update the todo in FireStore
-                                db.collection(user.getEmail()).document(TodoFragment.id.get(position))
+                                db.collection("Todos").document(TodoFragment.id.get(position))
                                         .update("todo",etComments.getText().toString())
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -258,7 +260,7 @@ public class TodoFragment extends Fragment {
     //Display Function
     private void display(){
         //Get the Todo from FireStore
-        db.collection(col).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("Todos").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 //Initialize todoItems ArrayList (Which Holds Todo items)
@@ -270,15 +272,14 @@ public class TodoFragment extends Fragment {
                     //Make ProgressBar Disappear
                     progressBar.setVisibility(View.GONE);
                     for(QueryDocumentSnapshot document : task.getResult()) {
-                        //Add the Todo id in id ArrayList
-                        id.add(0, document.getId());
-                        //Transform the Data from the FireStore to object of TodoItems class (to add it in todoItems ArrayList)
-                        TodoItems miss = document.toObject(TodoItems.class);
-                        //Add the Data in the ArrayList
-                        todoItems.add(0, miss);
-                        //Make the Add Button Clickable
-                        add.setEnabled(true);
-
+                        if (((String) document.get("uid")).equals(user.getUid())) {
+                            //Add the Todo id in id ArrayList
+                            id.add(0, document.getId());
+                            //Add The Data to todoItems(ArrayList)
+                            todoItems.add(0, new TodoItems((String) document.get("todo"), (Boolean) document.get("isCompleted")));
+                            //Make the Add Button Clickable
+                            add.setEnabled(true);
+                        }
                     }
                     //Initialize the Adapter
                     todoAdapter = new RecyclerViewAdapter(getContext(), todoItems);

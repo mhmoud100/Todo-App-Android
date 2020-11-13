@@ -38,17 +38,16 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline_right"
         app:layout_constraintStart_toStartOf="@id/guideline_left"
         app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/icon"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        android:contentDescription="logo"-->
-<!--        android:src="@drawable/ic_flattr"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline_right"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline_left"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
     <EditText
         android:id="@+id/username"
         android:layout_width="0dp"

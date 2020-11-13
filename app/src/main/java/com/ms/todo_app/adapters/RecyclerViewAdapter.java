@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                db = FirebaseFirestore.getInstance();
                user = FirebaseAuth.getInstance().getCurrentUser();
                assert user != null;
-               db.collection(Objects.requireNonNull(user.getEmail())).document(TodoFragment.id.get(position))
+               db.collection("Todos").document(TodoFragment.id.get(position))
                        .update("isCompleted",!item.getCompleted())
                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                            @Override
